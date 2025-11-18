@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import User, { IUser } from "./user_model";
-import { findUserByEmail } from "./user_repository";
+import { findUserByEmail, saveUser } from "./user_repository";
 
 // ------- register user ----------
 export const registerUser = async (userData: {
@@ -35,13 +35,14 @@ export const registerUser = async (userData: {
 
     // ------- generate OTP ---------
     const activationCode = crypto.randomBytes(3).toString("hex").toUpperCase();
-    console.log(activationCode);
+
     newUser.activationCode = activationCode;
     newUser.activationCodeExpiry = new Date(Date.now() + 10 * 60 * 1000);
 
     // TODO: send verification email
 
-    await newUser.save();
+    // 1: 45
+    await saveUser(newUser);
     return {
       success: true,
       message: "User registerd successfully",
