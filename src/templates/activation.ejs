@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Activate Your Account</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #333333;
+      }
+      .code-box {
+        background: #f0f0f0;
+        padding: 12px;
+        font-size: 22px;
+        letter-spacing: 2px;
+        border-radius: 6px;
+        text-align: center;
+        margin: 20px 0;
+        font-weight: bold;
+      }
+      .footer {
+        margin-top: 30px;
+        font-size: 12px;
+        color: #777777;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Hello <%= name %>,</h2>
+
+      <p>
+        Thank you for registering on our LMS platform. To activate your account,
+        please use the activation code below:
+      </p>
+
+      <div class="code-box"><%= activationCode %></div>
+
+      <p>Your registered email: <strong><%= email %></strong></p>
+
+      <p>If you did not sign up for this account, you can ignore this email.</p>
+
+      <div class="footer">
+        &copy; <%= new Date().getFullYear() %> LMS — All Rights Reserved
+      </div>
+    </div>
+  </body>
+</html>

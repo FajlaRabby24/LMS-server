@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
+import { sendEmail } from "../../utils/email";
 import User, { IUser } from "./user_model";
 import { findUserByEmail, saveUser } from "./user_repository";
 
@@ -39,10 +40,15 @@ export const registerUser = async (userData: {
     newUser.activationCode = activationCode;
     newUser.activationCodeExpiry = new Date(Date.now() + 10 * 60 * 1000);
 
-    // TODO: send verification email
-
-    // 1: 45
     await saveUser(newUser);
+
+    // send verification email
+
+    await sendEmail(email, "Activate Your Account - LMS", "activation", {
+      activationCode,
+      name,
+      email,
+    });
     return {
       success: true,
       message: "User registerd successfully",

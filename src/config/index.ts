@@ -14,6 +14,7 @@ interface IConfig {
   smtp_user: string;
   smtp_pass: string;
   smtp_from: string;
+  smtp_secure: string;
 }
 
 const config: IConfig = {
@@ -29,6 +30,7 @@ const config: IConfig = {
   smtp_user: process.env.SMTP_USER || "",
   smtp_pass: process.env.SMTP_PASS || "",
   smtp_from: process.env.SMTP_FROM || "",
+  smtp_secure: process.env.SMTP_SECURE || "",
 };
 
 export default config;
